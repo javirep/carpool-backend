@@ -29,6 +29,13 @@ router.post("/", async (req, res, next) => {
 
 })
 
+router.delete("/:notificationId", async (req, res, next) => {
+    const { notificationId } = req.params
+    await Notification.findByIdAndDelete({ "_id": notificationId })
+
+    res.json({ "message": "The notification has been successfully deleted" })
+})
+
 router.post("/notificationSeen", async (req, res, next) => {
     const { _id } = req.session.currentUser
     const newUser = await User.findByIdAndUpdate({ _id }, { $set: { newNotification: false } })
