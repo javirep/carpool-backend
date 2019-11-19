@@ -7,7 +7,11 @@ exports.isLoggedIn = () => (req, res, next) => {
 
 exports.isNotLoggedIn = () => (req, res, next) => {
     if (!req.session.currentUser) next();
-    else next(createError(403));
+    else {
+        console.log("The user is already connected")
+        console.log(req.session.currentUser)
+        next(createError(403))
+    };
 };
 
 exports.validationLoggin = () => async (req, res, next) => {

@@ -6,6 +6,7 @@ const userSchema = new Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    imgPath: { type: String, default: "./images/user-image.jpg" },
     rides: [{ type: Schema.Types.ObjectId, ref: "Ride" }],
     newNotification: { type: Boolean, default: false }
 }, {

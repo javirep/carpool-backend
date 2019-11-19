@@ -46,6 +46,7 @@ router.post("/login", isNotLoggedIn(), async (req, res, next) => {
 
 router.post("/signup", isNotLoggedIn(), validationLoggin(), async (req, res, next) => {
   const { name, lastName, email, password } = req.body;
+  console.log(name, lastName, email, password)
 
   const emailExist = await User.findOne({ email })
 
@@ -70,7 +71,6 @@ router.post("/logout", isLoggedIn(), (req, res, next) => {
   res
     .status(200)
     .send();
-  return;
 })
 
 module.exports = router;

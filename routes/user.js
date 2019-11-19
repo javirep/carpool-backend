@@ -9,7 +9,6 @@ const { isLoggedIn } = require("../helpers/middlewares")
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   req.session.currentUser.password = "******"
-  console.log(req.session.currentUser)
   res.json(req.session.currentUser);
 });
 
@@ -22,8 +21,8 @@ router.get("/:userId", async (req, res, next) => {
 
 router.put("/edit", async (req, res, next) => {
   const { _id } = req.session.currentUser
-  const { name, lastName } = req.body
-  const updatedUser = await User.findByIdAndUpdate({ _id }, { $set: { name, lastName } }, { new: true })
+  const { name, lastName, imgPath } = req.body
+  const updatedUser = await User.findByIdAndUpdate({ _id }, { $set: { name, lastName, imgPath } }, { new: true })
 
   res.json(updatedUser)
 })

@@ -62,11 +62,13 @@ const authRouter = require("./routes/auth.js")
 const userRouter = require("./routes/user.js")
 const rideRouter = require("./routes/ride.js")
 const notificationRouter = require("./routes/notification.js")
+const fileUpload = require('./routes/fileUpload')
 
 app.use('/auth', authRouter);
 app.use("/user", userRouter);
 app.use("/ride", rideRouter);
 app.use("/notification", notificationRouter);
+app.use('/api', fileUpload);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
