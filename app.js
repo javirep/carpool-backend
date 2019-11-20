@@ -68,7 +68,7 @@ app.use('/auth', authRouter);
 app.use("/user", userRouter);
 app.use("/ride", rideRouter);
 app.use("/notification", notificationRouter);
-app.use('/api', fileUpload);
+app.use('/file', fileUpload);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

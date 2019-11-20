@@ -21,8 +21,18 @@ router.get("/:userId", async (req, res, next) => {
 
 router.put("/edit", async (req, res, next) => {
   const { _id } = req.session.currentUser
-  const { name, lastName, imgPath } = req.body
-  const updatedUser = await User.findByIdAndUpdate({ _id }, { $set: { name, lastName, imgPath } }, { new: true })
+  const { name, lastName, imagePath } = req.body
+  console.log(name, lastName, imagePath)
+  let updatedUser;
+  if (name) {
+    updatedUser = await User.findByIdAndUpdate({ _id }, { $set: { name } }, { new: true })
+  }
+  if (lastName) {
+    updatedUser = await User.findByIdAndUpdate({ _id }, { $set: { lastName } }, { new: true })
+  }
+  if (imagePath) {
+    updatedUser = await User.findByIdAndUpdate({ _id }, { $set: { imagePath } }, { new: true })
+  }
 
   res.json(updatedUser)
 })
